@@ -18,8 +18,13 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "YOUR_BOT_TOKEN")
 PORT = os.environ.get("PORT", "10000") # Render assigns a port dynamically
 
 # Initialize Pyrogram
-app = Client("universal_sniper", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
-
+app = Client(
+    "universal_sniper", 
+    api_id=API_ID, 
+    api_hash=API_HASH, 
+    bot_token=BOT_TOKEN, 
+    in_memory=True  # <--- THE MAGIC BYPASS
+)
 # --- GLOBAL LOCK FOR RAM SAFETY ---
 # This prevents 2 people from downloading a 2GB file at the same time and crashing Render
 is_downloading = False
